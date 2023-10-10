@@ -1,34 +1,48 @@
 body {
     font-family: 'Kanit', sans-serif;
-    background-image: url(images/cardSelect.jpeg);
+    background-color: blueviolet;
+    color: white;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
 }
 
+footer {
+    text-align: center;
+}
+
 h1 {
     text-align: center;
-    color: purple;
+    color: paleturquoise;
     font-weight: bolder;
     font-size: 75px;
     text-shadow:
-    -2px -2px 0 black,
-    2px -2px 0 black, 
-    -2px 2px 0 black, 
-    2px 2px 0 black;
+    -2px -2px 0 purple,
+    2px -2px 0 purple, 
+    -2px 2px 0 purple, 
+    2px 2px 0 purple;
 }
 
+button {
+    color: black;
+    background-color: silver;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
 button:hover {
     color: black;
-    background-color: goldenrod;
+    background-color: paleturquoise;
 }
 
 a {
-    color: black;
+    color: white;
 }
 
 a:hover {
-    color: goldenrod;
+    color: paleturquoise;
 }
 
 .image-container {
@@ -49,16 +63,14 @@ a:hover {
     cursor: pointer;
 }
 
+.clicked {
+    transform: scale(1.1); 
+    box-shadow: 0 0 30px paleturquoise;
+}
+
 #number-display {
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
 }
 
-#generate-button {
-    font-size: 18px;
-    padding: 10px 20px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-}
