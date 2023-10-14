@@ -9,32 +9,87 @@
             font-family: Arial, sans-serif;
             background-color: black;
             color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         footer {
             text-align: center;
+            background-color: #8c00ff;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
         a {
-            color: pink;
+            color: white;
         }
         a:hover {
-            color: red;
+            color: rgb(0, 191, 255);
         }
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            text-align: center;
             padding: 20px;
+            position: relative;
+        }
+        .container img {
+            max-width: 100%;
+        }
+        .slider-container {
+            display: flex;
+            overflow: hidden;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slider img {
+            max-width: 100%;
+            min-width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="slider-container">
+            <a href="#" id="prev-button" onclick="moveSlider(-1)">Previous Slide</a>
+            <div class="slider">
+                <img src="images/draftRules.jpg">
+            </div>
+            <a href="#" id="next-button" onclick="moveSlider(1)">Next Slide </a>
+        </div>
         <br>
-        <img src="images/cardExp.jpg" alt="Description of the Image">
-        <a href = "index.html">Return</a>
+        <a href = "index.html">Return Home</a>
     </div>
 </body>
 <footer>
-    <br><br><br><br><br><br><br><br><br><br><br>
-    <h2>Created by <a href = "https://logannitzsche.com">Logan Nitzsche</a></h2>
+    <h2>&copy; 2023 <a href = "https://logannitzsche.com">Logan Nitzsche</a></h2>
 </footer>
+<script>
+    let currentSlide = 0;
+    const slider = document.querySelector('.slider');
+
+    function moveSlider(step) {
+        currentSlide += step;
+        if(currentSlide < 0) {
+            slider.innerHTML = '<img src="images/draftRules.jpg">';
+            currentSlide = 0;
+        }
+        else if(currentSlide == 1) {
+            slider.innerHTML = '<img src="images/cardExp.jpg">';
+        }
+        else if(currentSlide == 2) {
+            slider.innerHTML = '<img src="images/cardExpTwo.jpg">';
+        }
+        else if(currentSlide >= 3) {
+            currentSlide = 0;
+            slider.innerHTML = '<img src="images/draftRules.jpg">';
+        }
+    }
+</script>
 </html>

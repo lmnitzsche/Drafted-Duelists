@@ -1,7 +1,9 @@
 let cardCountPlayerOne = 0;
 let cardCountPlayerTwo = 0;
-let vetoesPlayerOne = 1;
-let vetoesPlayerTwo = 1;
+let ppPlayerOne = 1;
+let ppPlayerTwo = 1;
+let vetoesPlayerOne = 2;
+let vetoesPlayerTwo = 2;
 let isNumberGenerated = false;
 let remainingChakra = 0;
 let opponentRemainingChakra = 0;
@@ -18,6 +20,7 @@ const cardAttributes = {
         magicDamage: 2,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 0,
     },
     sasori: {
         chakra: 2,
@@ -27,6 +30,7 @@ const cardAttributes = {
         magicDamage: 1,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 0,
     },
     nagato: {
         chakra: 2,
@@ -36,6 +40,7 @@ const cardAttributes = {
         magicDamage: 4,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 0,
     },
     hidan: {
         chakra: 3,
@@ -45,6 +50,7 @@ const cardAttributes = {
         magicDamage: 0,
         meleeDamage: 0,
         rangeDamage: 3,
+        prodigy: 0,
     },
     itachi: {
         chakra: 3,
@@ -54,6 +60,7 @@ const cardAttributes = {
         magicDamage: 3,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 0,
     },
     zabuza: {
         chakra: 3,
@@ -63,6 +70,7 @@ const cardAttributes = {
         magicDamage: 1,
         meleeDamage: 3,
         rangeDamage: 0,
+        prodigy: 1,
     },
     deidara: {
         chakra: 4,
@@ -72,6 +80,7 @@ const cardAttributes = {
         magicDamage: 1,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 0,
     },
     neji: {
         chakra: 4,
@@ -81,6 +90,7 @@ const cardAttributes = {
         magicDamage: 0,
         meleeDamage: 4,
         rangeDamage: 0,
+        prodigy: 0,
     },
     rockLee: {
         chakra: 4,
@@ -90,6 +100,7 @@ const cardAttributes = {
         magicDamage: 5,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 0,
     },
     shikamaru: {
         chakra: 5,
@@ -99,6 +110,7 @@ const cardAttributes = {
         magicDamage: 0,
         meleeDamage: 0,
         rangeDamage: 4,
+        prodigy: 0,
     },
     kisame: {
         chakra: 5,
@@ -108,6 +120,7 @@ const cardAttributes = {
         magicDamage: 5,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 0,
     },
     sakura: {
         chakra: 5,
@@ -117,6 +130,7 @@ const cardAttributes = {
         magicDamage: 0,
         meleeDamage: 3,
         rangeDamage: 0,
+        prodigy: 0,
     },
     konan: {
         chakra: 5,
@@ -126,6 +140,7 @@ const cardAttributes = {
         magicDamage: 0,
         meleeDamage: 0,
         rangeDamage: 3,
+        prodigy: 1,
     },
     hinata: {
         chakra: 6,
@@ -135,6 +150,7 @@ const cardAttributes = {
         magicDamage: 0,
         meleeDamage: 0,
         rangeDamage: 3,
+        prodigy: 0,
     },
     gaara: {
         chakra: 6,
@@ -144,6 +160,7 @@ const cardAttributes = {
         magicDamage: 3,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 1,
     },
     kakashi: {
         chakra: 7,
@@ -153,6 +170,7 @@ const cardAttributes = {
         magicDamage: 4,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 0,
     },
     madara: {
         chakra: 7,
@@ -162,6 +180,7 @@ const cardAttributes = {
         magicDamage: 2,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 0,
     },
     jiraiya: {
         chakra: 7,
@@ -171,6 +190,7 @@ const cardAttributes = {
         magicDamage: 0,
         meleeDamage: 5,
         rangeDamage: 0,
+        prodigy: 1,
     },
     kakuzu: {
         chakra: 8,
@@ -180,6 +200,7 @@ const cardAttributes = {
         magicDamage: 0,
         meleeDamage: 3,
         rangeDamage: 0,
+        prodigy: 0,
     },
     tsunade: {
         chakra: 8,
@@ -189,6 +210,7 @@ const cardAttributes = {
         magicDamage: 0,
         meleeDamage: 4,
         rangeDamage: 0,
+        prodigy: 0,
     },
     obito: {
         chakra: 8,
@@ -198,6 +220,7 @@ const cardAttributes = {
         magicDamage: 5,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 1,
     },
     naruto: {
         chakra: 9,
@@ -207,6 +230,7 @@ const cardAttributes = {
         magicDamage: 0,
         meleeDamage: 6,
         rangeDamage: 0,
+        prodigy: 0,
     },
     sasuke: {
         chakra: 9,
@@ -216,6 +240,7 @@ const cardAttributes = {
         magicDamage: 5,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 0,
     },
     killerB: {
         chakra: 9,
@@ -225,6 +250,7 @@ const cardAttributes = {
         magicDamage: 5,
         meleeDamage: 0,
         rangeDamage: 0,
+        prodigy: 1,
     }
 };
 
@@ -273,14 +299,20 @@ function startGame() {
 }
 
 function updateChakraDisplay() {
-    document.getElementById('number-display').textContent = `Player 1 Chakra: ${remainingChakra}, Vetoes: ${vetoesPlayerOne}, Cards: ${cardCountPlayerOne}`;
-    document.getElementById('number-display-two').textContent = `Player 2 Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Cards: ${cardCountPlayerTwo}`;
+    if(playerOneTurn) {
+        document.getElementById('number-display').textContent = `* Player 1 Chakra: ${remainingChakra}, Vetoes: ${vetoesPlayerOne}, Prodigy Picks: ${ppPlayerOne}`;
+        document.getElementById('number-display-two').textContent = `Player 2 Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Prodigy Picks: ${ppPlayerTwo}`;
+    }
+    else {
+        document.getElementById('number-display').textContent = `Player 1 Chakra: ${remainingChakra}, Vetoes: ${vetoesPlayerOne}, Prodigy Picks: ${ppPlayerOne}`;
+        document.getElementById('number-display-two').textContent = `* Player 2 Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Prodigy Picks: ${ppPlayerTwo}`;
+    }
 
 }
 
 function toggleClicked() {
     if(this.classList.contains('clicked')) {
-        if(playerOneTurn == true && vetoesPlayerOne == 1) {
+        if(playerOneTurn == true && vetoesPlayerOne != 0) {
             const cardName = this.src.split('/').pop().split('.')[0];
             const chakraCost = cardAttributes[cardName].chakra;
             opponentRemainingChakra += chakraCost;
@@ -295,7 +327,7 @@ function toggleClicked() {
                 selectedCardsPlayerTwo.splice(index, 1);
             }
         }
-        else if(playerOneTurn == false && vetoesPlayerTwo == 1) {
+        else if(playerOneTurn == false && vetoesPlayerTwo != 0) {
             cardName = this.src.split('/').pop().split('.')[0];
             chakraCost = cardAttributes[cardName].chakra;
             remainingChakra += chakraCost;
@@ -316,36 +348,70 @@ function toggleClicked() {
     {
         cardName = this.src.split('/').pop().split('.')[0];
         chakraCost = cardAttributes[cardName].chakra;
-
+        const prodigyAttribute = cardAttributes[cardName].prodigy;
+        
         if(remainingChakra >= chakraCost) {
-            this.classList.add('clicked');
-            cardCountPlayerOne++;
-            remainingChakra -= chakraCost;
-            updateChakraDisplay();
-            selectedCardsPlayerOne.push(cardName);
+            if(prodigyAttribute == 1 && ppPlayerOne != 0) {
+                ppPlayerOne--;
+                this.classList.add('clicked');
+                cardCountPlayerOne++;
+                remainingChakra -= chakraCost;
+                playerOneTurn = false;
+                updateChakraDisplay();
+                selectedCardsPlayerOne.push(cardName);
+            }
+            else if(prodigyAttribute == 0) {
+                this.classList.add('clicked');
+                cardCountPlayerOne++;
+                remainingChakra -= chakraCost;
+                playerOneTurn = false;
+                updateChakraDisplay();
+                selectedCardsPlayerOne.push(cardName);
+            }
+            else {
+                alert("You've already made your prodigy pick.")
+            }
         }
         else {
             alert("Not enough chakra to select this card.");
+            playerOneTurn = false;
+            updateChakraDisplay();
         }
-        playerOneTurn = false;
     }
 
     else if(cardCountPlayerTwo < 8 && playerOneTurn == false)
     {
         cardName = this.src.split('/').pop().split('.')[0];
         chakraCost = cardAttributes[cardName].chakra;
+        prodigyAttribute = cardAttributes[cardName].prodigy;
 
         if(opponentRemainingChakra >= chakraCost) {
-            this.classList.add('clicked');
-            cardCountPlayerTwo++;
-            opponentRemainingChakra -= chakraCost;
-            updateChakraDisplay();
-            selectedCardsPlayerTwo.push(cardName);
+            if(prodigyAttribute == 0) {
+                this.classList.add('clicked');
+                cardCountPlayerTwo++;
+                opponentRemainingChakra -= chakraCost;
+                playerOneTurn = true;
+                updateChakraDisplay();
+                selectedCardsPlayerTwo.push(cardName);
+            }
+            else if(prodigyAttribute == 1 && ppPlayerTwo != 0) {
+                ppPlayerTwo--;
+                this.classList.add('clicked');
+                cardCountPlayerTwo++;
+                opponentRemainingChakra -= chakraCost;
+                playerOneTurn = true;
+                updateChakraDisplay();
+                selectedCardsPlayerTwo.push(cardName);
+            }
+            else {
+                alert("You've already made your prodigy pick.")
+            }
         }
         else {
             alert("Not enough chakra to select this card.");
+            playerOneTurn = true;
+            updateChakraDisplay();
         }
-        playerOneTurn = true;
     }
 
     else

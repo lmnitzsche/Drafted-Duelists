@@ -10,27 +10,7 @@
     <div class="opponent-container"></div>
     <h1>VS</h1>
     <div class="image-container"></div>
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        const selectedCardSources = params.getAll('card');
-        const imageContainer = document.querySelector('.image-container');
-        const opponentContainer = document.querySelector('.opponent-container');
-        let count = 1;
-
-        selectedCardSources.forEach(source => {
-            const card = document.createElement('img');
-            card.src = source;
-            card.className = 'image';
-            
-            if(count % 2 == 1) {
-                imageContainer.appendChild(card);
-            }
-            else {
-                opponentContainer.appendChild(card);
-            }
-            count++;
-        });
-    </script>
+    <script src="gameEngine.js"></script>
 </body>
 </html>
 
