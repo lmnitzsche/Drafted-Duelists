@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Cards</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="opponent-container"></div>
+    <h1>VS</h1>
+    <div class="image-container"></div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const selectedCardSources = params.getAll('card');
+        const imageContainer = document.querySelector('.image-container');
+        
+        selectedCardSources.forEach(source => {
+            const card = document.createElement('img');
+            card.src = source;
+            card.className = 'image';
+            imageContainer.appendChild(card);
+        });
+    </script>
+</body>
+</html>
+
