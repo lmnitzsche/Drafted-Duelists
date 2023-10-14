@@ -1,6 +1,13 @@
-let cardCount = 0;
+let cardCountPlayerOne = 0;
+let cardCountPlayerTwo = 0;
+let vetoesPlayerOne = 1;
+let vetoesPlayerTwo = 1;
 let isNumberGenerated = false;
 let remainingChakra = 0;
+let opponentRemainingChakra = 0;
+let playerOneTurn = true;
+const selectedCardsPlayerOne = [];
+const selectedCardsPlayerTwo = [];
 
 const cardAttributes = {
     orochimaru: {
@@ -223,12 +230,11 @@ const cardAttributes = {
 
 function generateRandomNumber() {
     if(isNumberGenerated == false) {
-        cardCount = 0;
+        cardCountPlayerOne = 0;
+        cardCountPlayerTwo = 0;
         const min = 5;
         const max = 30;
         const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-        document.getElementById('number-display').textContent = `Chakra Left: ${randomNumber}`;
-        selectedCardcardCount = randomNumber;
 
         const button = document.getElementById('generate-button');
         button.parentNode.removeChild(button);
@@ -240,16 +246,18 @@ function generateRandomNumber() {
         });
         isNumberGenerated = true;
         remainingChakra = randomNumber;
+        opponentRemainingChakra = randomNumber;
+        updateChakraDisplay();
     }
 }
 
 function startGame() {
     const selectedCards = document.querySelectorAll('.image.clicked');
 
-    if(selectedCards.length < 1) {
-        alert("Select at least 1 card to start the game.");
+    if(selectedCards.length < 2) {
+        alert("Select at least 1 card each to start the game.");
     } 
-    else if(selectedCards.length <= 8) {
+    else if(selectedCards.length <= 16) {
         const selectedCardSources = [];
         selectedCards.forEach(card => {
             selectedCardSources.push(card.src);
@@ -260,40 +268,86 @@ function startGame() {
         window.open(newPageURL, '_blank');
     } 
     else {
-        alert("The maximum deck size is 8 cards.");
+        alert("The maximum deck size is 8 cards each.");
     }
 }
+
 function updateChakraDisplay() {
-    document.getElementById('number-display').textContent = `Chakra Left: ${remainingChakra}`;
+    document.getElementById('number-display').textContent = `Player 1 Chakra: ${remainingChakra}, Vetoes: ${vetoesPlayerOne}, Cards: ${cardCountPlayerOne}`;
+    document.getElementById('number-display-two').textContent = `Player 2 Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Cards: ${cardCountPlayerTwo}`;
+
 }
 
 function toggleClicked() {
-    if(this.classList.contains('clicked'))
-    {
-        const cardName = this.src.split('/').pop().split('.')[0];
-        const chakraCost = cardAttributes[cardName].chakra;
-        remainingChakra += chakraCost;
-        updateChakraDisplay();
+    if(this.classList.contains('clicked')) {
+        if(playerOneTurn == true && vetoesPlayerOne == 1) {
+            const cardName = this.src.split('/').pop().split('.')[0];
+            const chakraCost = cardAttributes[cardName].chakra;
+            opponentRemainingChakra += chakraCost;
+            this.classList.remove('clicked');
+            this.parentNode.removeChild(this);
+            cardCountPlayerTwo--;
+            vetoesPlayerOne--;
+            updateChakraDisplay();
 
-        this.classList.remove('clicked');
-        cardCount--;
+            const index = selectedCardsPlayerTwo.indexOf(cardName);
+            if(index !== -1) {
+                selectedCardsPlayerTwo.splice(index, 1);
+            }
+        }
+        else if(playerOneTurn == false && vetoesPlayerTwo == 1) {
+            cardName = this.src.split('/').pop().split('.')[0];
+            chakraCost = cardAttributes[cardName].chakra;
+            remainingChakra += chakraCost;
+            this.classList.remove('clicked');
+            this.parentNode.removeChild(this);
+            cardCountPlayerOne--;
+            vetoesPlayerTwo--;
+            updateChakraDisplay();
+
+            const index = selectedCardsPlayerOne.indexOf(cardName);
+            if(index !== -1) {
+                selectedCardsPlayerOne.splice(index, 1);
+            }
+        }
     }
 
-    else if(cardCount < 8)
+    else if(cardCountPlayerOne < 8 && playerOneTurn == true)
     {
         cardName = this.src.split('/').pop().split('.')[0];
         chakraCost = cardAttributes[cardName].chakra;
 
         if(remainingChakra >= chakraCost) {
             this.classList.add('clicked');
-            cardCount++;
+            cardCountPlayerOne++;
             remainingChakra -= chakraCost;
             updateChakraDisplay();
+            selectedCardsPlayerOne.push(cardName);
         }
         else {
             alert("Not enough chakra to select this card.");
         }
+        playerOneTurn = false;
     }
+
+    else if(cardCountPlayerTwo < 8 && playerOneTurn == false)
+    {
+        cardName = this.src.split('/').pop().split('.')[0];
+        chakraCost = cardAttributes[cardName].chakra;
+
+        if(opponentRemainingChakra >= chakraCost) {
+            this.classList.add('clicked');
+            cardCountPlayerTwo++;
+            opponentRemainingChakra -= chakraCost;
+            updateChakraDisplay();
+            selectedCardsPlayerTwo.push(cardName);
+        }
+        else {
+            alert("Not enough chakra to select this card.");
+        }
+        playerOneTurn = true;
+    }
+
     else
     {
         alert("The maximum deck size is 8 cards.")

@@ -51,6 +51,12 @@ a:hover {
     justify-content: center;
 }
 
+.opponent-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .image {
     width: 150px;
     height: 212px;
@@ -69,6 +75,12 @@ a:hover {
 }
 
 #number-display {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#number-display-two {
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
