@@ -77,8 +77,11 @@
     function moveSlider(step) {
         currentSlide += step;
         if(currentSlide < 0) {
+            currentSlide = 2;
+            slider.innerHTML = '<img src="images/cardExpTwo.jpg">'
+        }
+        else if(currentSlide == 0) {
             slider.innerHTML = '<img src="images/draftRules.jpg">';
-            currentSlide = 0;
         }
         else if(currentSlide == 1) {
             slider.innerHTML = '<img src="images/cardExp.jpg">';

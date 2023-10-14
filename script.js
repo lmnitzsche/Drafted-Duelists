@@ -300,12 +300,12 @@ function startGame() {
 
 function updateChakraDisplay() {
     if(playerOneTurn) {
-        document.getElementById('number-display').textContent = `* Player 1 Chakra: ${remainingChakra}, Vetoes: ${vetoesPlayerOne}, Prodigy Picks: ${ppPlayerOne}`;
-        document.getElementById('number-display-two').textContent = `Player 2 Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Prodigy Picks: ${ppPlayerTwo}`;
+        document.getElementById('number-display').textContent = `* Team 10's Chakra: ${remainingChakra}, Vetoes: ${vetoesPlayerOne}, Prodigy Picks: ${ppPlayerOne}`;
+        document.getElementById('number-display-two').textContent = `Orien Fleet's Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Prodigy Picks: ${ppPlayerTwo}`;
     }
     else {
-        document.getElementById('number-display').textContent = `Player 1 Chakra: ${remainingChakra}, Vetoes: ${vetoesPlayerOne}, Prodigy Picks: ${ppPlayerOne}`;
-        document.getElementById('number-display-two').textContent = `* Player 2 Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Prodigy Picks: ${ppPlayerTwo}`;
+        document.getElementById('number-display').textContent = `Team 10's Chakra: ${remainingChakra}, Vetoes: ${vetoesPlayerOne}, Prodigy Picks: ${ppPlayerOne}`;
+        document.getElementById('number-display-two').textContent = `* Orien Fleet's Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Prodigy Picks: ${ppPlayerTwo}`;
     }
 
 }
