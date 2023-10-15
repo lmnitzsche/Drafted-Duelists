@@ -12,6 +12,36 @@ const selectedCardsPlayerOne = [];
 const selectedCardsPlayerTwo = [];
 
 const cardAttributes = {
+    sai: {
+        chakra: 0,
+        health: 5,
+        armor: 0,
+        speed: 1,
+        magicDamage: 0,
+        meleeDamage: 0,
+        rangeDamage: 0,
+        prodigy: 0,
+    },
+    minato: {
+        chakra: 0,
+        health: 1,
+        armor: 1,
+        speed: 7,
+        magicDamage: 0,
+        meleeDamage: 1,
+        rangeDamage: 0,
+        prodigy: 1,
+    },
+    danzo: {
+        chakra: 1,
+        health: 1,
+        armor: 4,
+        speed: 1,
+        magicDamage: 0,
+        meleeDamage: 0,
+        rangeDamage: 2,
+        prodigy: 0,
+    },
     orochimaru: {
         chakra: 1,
         health: 2,
@@ -19,6 +49,16 @@ const cardAttributes = {
         speed: 3,
         magicDamage: 2,
         meleeDamage: 0,
+        rangeDamage: 0,
+        prodigy: 0,
+    },
+    kimimaro: {
+        chakra: 2,
+        health: 1,
+        armor: 1,
+        speed: 6,
+        magicDamage: 1,
+        meleeDamage: 1,
         rangeDamage: 0,
         prodigy: 0,
     },
@@ -50,6 +90,16 @@ const cardAttributes = {
         magicDamage: 0,
         meleeDamage: 0,
         rangeDamage: 3,
+        prodigy: 0,
+    },
+    kabuto: {
+        chakra: 3,
+        health: 4,
+        armor: 0,
+        speed: 4,
+        magicDamage: 3,
+        meleeDamage: 0,
+        rangeDamage: 0,
         prodigy: 0,
     },
     itachi: {
@@ -97,7 +147,17 @@ const cardAttributes = {
         health: 4,
         armor: 0,
         speed: 8,
-        magicDamage: 5,
+        magicDamage: 0,
+        meleeDamage: 5,
+        rangeDamage: 0,
+        prodigy: 0,
+    },
+    a: {
+        chakra: 4,
+        health: 5,
+        armor: 0,
+        speed: 5,
+        magicDamage: 3,
         meleeDamage: 0,
         rangeDamage: 0,
         prodigy: 0,
@@ -152,6 +212,16 @@ const cardAttributes = {
         rangeDamage: 3,
         prodigy: 0,
     },
+    shisui: {
+        chakra: 6,
+        health: 3,
+        armor: 5,
+        speed: 6,
+        magicDamage: 0,
+        meleeDamage: 0,
+        rangeDamage: 5,
+        prodigy: 0,
+    },
     gaara: {
         chakra: 6,
         health: 7,
@@ -199,6 +269,16 @@ const cardAttributes = {
         speed: 3,
         magicDamage: 0,
         meleeDamage: 3,
+        rangeDamage: 0,
+        prodigy: 0,
+    },
+    mightGuy: {
+        chakra: 8,
+        health: 5,
+        armor: 0,
+        speed: 8,
+        magicDamage: 0,
+        meleeDamage: 8,
         rangeDamage: 0,
         prodigy: 0,
     },
@@ -301,13 +381,25 @@ function startGame() {
 function updateChakraDisplay() {
     if(playerOneTurn) {
         document.getElementById('number-display').textContent = `* Team 10's Chakra: ${remainingChakra}, Vetoes: ${vetoesPlayerOne}, Prodigy Picks: ${ppPlayerOne}`;
-        document.getElementById('number-display-two').textContent = `Orien Fleet's Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Prodigy Picks: ${ppPlayerTwo}`;
+        document.getElementById('number-display-two').textContent = `Class 1-A's Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Prodigy Picks: ${ppPlayerTwo}`;
     }
     else {
         document.getElementById('number-display').textContent = `Team 10's Chakra: ${remainingChakra}, Vetoes: ${vetoesPlayerOne}, Prodigy Picks: ${ppPlayerOne}`;
-        document.getElementById('number-display-two').textContent = `* Orien Fleet's Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Prodigy Picks: ${ppPlayerTwo}`;
+        document.getElementById('number-display-two').textContent = `* Class 1-A's Chakra: ${opponentRemainingChakra}, Vetoes: ${vetoesPlayerTwo}, Prodigy Picks: ${ppPlayerTwo}`;
     }
+}
 
+function narutoLink() {
+    window.location.href = 'subpages/narutoLink.html';
+}
+function heroLink() {
+    window.location.href = 'subpages/heroLink.html';
+}
+function starLink() {
+    window.location.href = 'subpages/starLink.html'
+}
+function dcLink() {
+    window.location.href = 'subpages/dcLink.html'
 }
 
 function toggleClicked() {
