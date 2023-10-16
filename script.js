@@ -401,6 +401,18 @@ function starLink() {
 function dcLink() {
     window.location.href = 'subpages/dcLink.html'
 }
+function hunterLink() {
+    window.location.href = 'subpages/hunterLink.html'
+}
+function breakingLink() {
+    window.location.href = 'subpages/breakingBadLink.html'
+}
+function deathNoteLink() {
+    window.location.href = 'subpages/deathNoteLink.html'
+}
+function marvelLink() {
+    window.location.href = 'subpages/marvelLink.html'
+}
 
 function toggleClicked() {
     if(this.classList.contains('clicked')) {
